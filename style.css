@@ -1,9 +1,10 @@
 :root {
-  --side-margin: 30px;
+  --side-margin: 20px;
   --body-text-color: #565656;
   --gradient-bg: #0891b2;
 }
 
+/* css reset */
 *,
 *::after,
 *::before {
@@ -11,6 +12,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+img {
+  display: block;
+}
+
 * {
   outline: 1px solid gray;
 }
@@ -18,7 +24,7 @@
 body {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
 }
 
 header {
@@ -64,10 +70,9 @@ header {
 .about-me {
   display: flex;
   flex-direction: column;
+  background-color: white;
   align-items: center;
-  margin: 0 var(--side-margin);
-  
-
+  padding: 0 var(--side-margin);
 
   & p {
     line-height: 1.2lh;
@@ -77,6 +82,52 @@ header {
 
 h1 {
   font-family: serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 10px auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin: 0 var(--side-margin);
+  gap: 30px;
+}
+
+.project-card {
+    background-color: white;
+    box-shadow: 2px 4px 12px 4px rgb(0 0 0 / .15);
+
+  & img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightpink;
+    aspect-ratio: 1.5;
+    font-size: 3rem;
+  }
+}
+
+.project-text-container {
+  display: grid;
+  padding: 20px;
+  grid-template: 1fr auto / auto;
+  grid-template-areas:
+    "title icons"
+    "desc desc";
+    
+    & h3 {
+        grid-area: title;
+    }
+    
+    & .icons {
+        grid-area: icons;
+        justify-self: end;
+    }
+}
+
+
+.project-desc {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    grid-area: desc;
 }
