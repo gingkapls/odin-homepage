@@ -1,7 +1,13 @@
 :root {
   --side-margin: 20px;
-  --body-text-color: #565656;
-  --gradient-bg: #0891b2;
+  --body-bg-color: #ffffff;
+  --card-bg-color: #fbfbfb;
+  --text-color: #393a34;
+
+  --gradient-bg: #2f8a89;
+  font-size: clamp(14px, 4vw, 24px);
+  --font-size-headings: max(23px, 13vw);
+  --font-size-name: var(--font-size-headings);
 }
 
 /* css reset */
@@ -13,27 +19,51 @@
   box-sizing: border-box;
 }
 
+iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
 img {
   display: block;
 }
 
+a:has(iconify-icon) {
+  color: var(--body-text-color);
+
+  & :visited {
+    color: var(--body-text-color);
+  }
+}
+
+/* 
 * {
   outline: 1px solid gray;
-}
+} */
 
 body {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  background-color: var(--body-bg-color);
+  color: var(--text-color);
 }
 
 header {
   display: flex;
   flex-direction: column;
+  background-image: linear-gradient(
+    140deg,
+    var(--gradient-bg) 35%,
+    rgba(0, 0, 0, 0.4) 35.5%,
+    white 35.8%,
+    white
+  );
 
   & .background {
     width: 100%;
-    height: 45vh;
+    height: 120vw;
     background-color: var(--gradient-bg);
     position: absolute;
     z-index: -1;
@@ -51,6 +81,7 @@ header {
 
   & img {
     grid-area: img;
+    background-color: #e6eae9;
     border-radius: 16px;
     width: inherit;
   }
@@ -61,8 +92,8 @@ header {
     align-self: end;
     justify-self: center;
     width: 100%;
-    font-size: 13vw;
-    color: white;
+    font-size: var(--font-size-name);
+    color: var(--body-bg-color);
     text-shadow: 2px 2px 8px gray;
   }
 }
@@ -70,19 +101,21 @@ header {
 .about-me {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--body-bg-color);
   align-items: center;
   padding: 0 var(--side-margin);
 
-  & p {
+  & .desc {
     line-height: 1.2lh;
     color: var(--body-text-color);
+    margin-bottom: 30px;
   }
 }
 
 h1 {
   font-family: serif;
-  font-size: 2.5rem;
+  /* font-size: 2.5rem; */
+  font-size: var(--font-size-headings);
   margin: 10px auto;
 }
 
@@ -94,16 +127,18 @@ main {
 }
 
 .project-card {
-    background-color: white;
-    box-shadow: 2px 4px 12px 4px rgb(0 0 0 / .15);
+  background-color: var(--card-bg-color);
+  box-shadow: 2px 4px 12px 4px rgb(0 0 0 / 0.15);
 
   & img {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightpink;
+    background-color: var(--gradient-bg);
+    color: var(--card-bg-color);
     aspect-ratio: 1.5;
-    font-size: 3rem;
+    padding: 0 20px;
+    font-size: var(--font-size-headings);
   }
 }
 
@@ -114,20 +149,61 @@ main {
   grid-template-areas:
     "title icons"
     "desc desc";
-    
-    & h3 {
-        grid-area: title;
-    }
-    
-    & .icons {
-        grid-area: icons;
-        justify-self: end;
-    }
+
+  & h3 {
+    grid-area: title;
+    font-size: 1.2rem;
+  }
+
+  & .icons {
+    grid-area: icons;
+    display: flex;
+    gap: 10px;
+    justify-self: end;
+    font-size: 1.5rem;
+  }
 }
 
-
 .project-desc {
-    margin-top: 10px;
-    margin-bottom: 40px;
-    grid-area: desc;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  grid-area: desc;
+}
+
+footer {
+  background-color: var(--gradient-bg);
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+  & img {
+    margin-top: 30px;
+    width: 100vw;
+    object-fit: cover;
+  }
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  align-self: center;
+
+  & iconify-icon {
+    margin: 0 6px;
+  }
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: start;
+  margin: 0 var(--side-margin);
+}
+
+.request-text {
+  font-size: 1.2rem;
+  font-weight: bolder;
 }
