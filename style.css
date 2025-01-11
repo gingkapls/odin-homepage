@@ -52,9 +52,12 @@ img {
 }
 
 a:has(iconify-icon) {
+  display: flex;
+  gap: 4px;
   height: 1em;
-  margin: 8px;
+  margin: 2px 8px;
   color: var(--body-text-color);
+  text-decoration: none;
 
   & :visited {
     color: var(--body-text-color);
