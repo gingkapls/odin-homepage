@@ -111,7 +111,7 @@ header {
 .about-me {
   /* background-color: var(--body-bg-color); */
   position: relative;
-  background-color: wheat;
+  background-color: var(--card-bg-color);
   align-items: center;
   flex: 1 0 none;
   height: 70%;
